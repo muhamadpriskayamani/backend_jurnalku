@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\UserController;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::post('/login', [UserController::class, 'login']);
+use App\Http\Controllers\api\SettingController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+Route::apiResource(name: '/setting', controller: SettingController::class);
